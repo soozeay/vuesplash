@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import PhotoList from './pages/PhotoList.vue';
+import store from './store';
 import Login from './pages/Login.vue';
 
 const routes = [
@@ -11,7 +12,14 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: Login
+    component: Login,
+    beforeEnter (to, from, next) {
+      if (store.getters['auth/check']) {
+        next('/')
+      } else {
+        next()
+      }
+    }
   }
 ]
 
