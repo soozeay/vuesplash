@@ -5,11 +5,19 @@ import store from './store'
 import App from './App.vue'
 import './bootstrap'
 
-const app = createApp({
-  template: "<App />",
-  components: { App }
-})
 
-app.use(router)
-app.use(store)
-app.mount('#app')
+const startApp = async () => {
+  await store.dispatch('auth/currentUser')
+
+  const app = createApp({
+    template: "<App />",
+    components: { App }
+  })
+
+  app.use(router)
+  app.use(store)
+  app.mount('#app')
+
+}
+
+startApp()
