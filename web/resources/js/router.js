@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import PhotoList from './pages/PhotoList.vue';
+import SystemError from './pages/errors/System.vue';
 import store from './store';
 import Login from './pages/Login.vue';
 
@@ -20,6 +21,10 @@ const routes = [
         next()
       }
     }
+  },
+  {
+    path: '/500',
+    component: SystemError
   }
 ]
 
