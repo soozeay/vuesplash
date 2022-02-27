@@ -114,6 +114,7 @@
       <path value="$PROJECT_DIR$/web/vendor/psr/simple-cache" />
       <path value="$PROJECT_DIR$/web/vendor/psr/log" />
       <path value="$PROJECT_DIR$/web/vendor/laravel/ui" />
+      <path value="$PROJECT_DIR$/web/vendor/laravel/breeze" />
     </include_path>
   </component>
   <component name="PhpInterpreters">
