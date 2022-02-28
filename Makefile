@@ -5,7 +5,7 @@ build:
 work:
 	docker compose exec app bash
 db:
-	docker compose exec mysql bash
+	docker compose exec postgresql bash
 stop:
 	docker compose stop
 install:

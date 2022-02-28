@@ -19,18 +19,16 @@ services:
       - "8081:8081"
       - "3000:3000"
     depends_on:
-      - mysql
+      - postgresql
 
-  mysql:
-    platform: linux/x86_64
-    image: mysql:5.7
+  postgresql:
+    image: postgres:11-alpine
     restart: always
     environment:
-      MYSQL_DATABASE: vuesplash
-      MYSQL_USER: user
-      MYSQL_PASSWORD: root
-      MYSQL_ROOT_PASSWORD: root
+      - POSTGRES_DB=vuesplash
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
     ports:
-      - 3306:3306
+      - 5432:5432
     volumes:
-      - ./web/storage/mysql:/var/lib/mysql
+      - ./web/storage/postgresql:/var/lib/postgresql/data
