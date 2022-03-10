@@ -23,3 +23,8 @@ Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/user', function() {
   return Auth::user();
 })->name('user');
+
+Route::middleware('cors')->group(function () {
+  Route::get('/login/google', 'GoogleController@redirectToGoogle')->name('google.login');
+  Route::get('/login/google/callback', 'GoogleController@handleGoogleCallback')->name('google.callback');
+});
