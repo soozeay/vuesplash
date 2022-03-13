@@ -92,23 +92,24 @@ const actions = {
     context.commit('setApiStatus', false)
     context.commit('error/setCode', response.status, { root: true })
   },
-  async googleLogin (context) {
+  googleLogin (context) {
     context.commit('setApiStatus', null)
-    const response = await axios.get('/api/login/google')
+    const response = document.location.pathname = '/api/login/google'
 
-    if (response.status === OK) {
-      context.commit('setApiStatus', true)
-      context.commit('setUser', response.data)
-      return false
-    }
-
-    context.commit('setApiStatus', false)
-
-    if (response.status === UNPROCESSABLE_ENTITY) {
-      context.commit('setLoginErrorMessages', response.data.errors)
-    } else {
-      context.commit('error/setCode', response.status, {root: true})
-    }
+    // Fix-me：CORSエラーを直したら復活させたい
+    // if (response.status === OK) {
+    //   context.commit('setApiStatus', true)
+    //   context.commit('setUser', response.data)
+    //   return false
+    // }
+    //
+    // context.commit('setApiStatus', false)
+    //
+    // if (response.status === UNPROCESSABLE_ENTITY) {
+    //   context.commit('setLoginErrorMessages', response.data.errors)
+    // } else {
+    //   context.commit('error/setCode', response.status, {root: true})
+    // }
   }
 }
 

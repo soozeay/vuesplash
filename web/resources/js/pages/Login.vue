@@ -107,12 +107,13 @@ export default {
       this.$store.commit('auth/setLoginErrorMessages', null)
       this.$store.commit('auth/setRegisterErrorMessages', null)
     },
-    async googleLogin () {
-      await this.$store.dispatch('auth/googleLogin')
+    googleLogin () {
+      this.$store.dispatch('auth/googleLogin')
 
-      if (this.apiStatus) {
-        this.$router.push('/')
-      }
+      // Fix-me：CORS直してから復活させたい
+      // if (this.apiStatus) {
+      //   this.$router.push('/')
+      // }
     }
   },
   created () {
