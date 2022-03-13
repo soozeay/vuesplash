@@ -30,6 +30,9 @@
           <button type="submit" class="button button--inverse">login</button>
         </div>
       </form>
+      <div class="google-login" @click="googleLogin">
+        <button><img src="https://developers.google.com/identity/images/btn_google_signin_dark_normal_web.png" style="margin-left: 3em;"></button>
+      </div>
     </div>
     <div class="panel" v-show="tab === 2">
       <form class="form" @submit.prevent="register">
@@ -103,6 +106,14 @@ export default {
     clearError () {
       this.$store.commit('auth/setLoginErrorMessages', null)
       this.$store.commit('auth/setRegisterErrorMessages', null)
+    },
+    googleLogin () {
+      this.$store.dispatch('auth/googleLogin')
+
+      // Fix-me：CORS直してから復活させたい
+      // if (this.apiStatus) {
+      //   this.$router.push('/')
+      // }
     }
   },
   created () {
